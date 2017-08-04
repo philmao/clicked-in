@@ -1,7 +1,13 @@
+var db = require('../models');
+
 module.exports = function(app) {
 
     app.get('/', function(req, res) {
-        res.render('index');
+
+        db.profile.findAll({}).then(function(profiles){
+            res.render('index', { profiles });
+        });
+        
     });
 
 };

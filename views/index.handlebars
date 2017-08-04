@@ -7,17 +7,9 @@
 <div class="long">
     <div class="container">
         <div class="row">
-            {{> profile-parts/profile}}
-
-            {{> profile-parts/profile}}
-
-            {{> profile-parts/profile}}
-
-            {{> profile-parts/profile}}
-
-            {{> profile-parts/profile}}
-
-            {{> profile-parts/profile}}
+            {{#each profiles}}
+                {{> profile-parts/profile}}
+            {{/each}}
         </div>
     </div>
 </div>
