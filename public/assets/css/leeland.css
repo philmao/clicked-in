@@ -1,0 +1,135 @@
+/*=======================
+NAVBAR CSS
+========================*/
+
+body {
+    background-color: #fff;
+    padding-top: 120px;
+}
+nav.navbar {
+   -webkit-transition: all 0.4s ease;
+   transition: all 0.4s ease;
+}
+
+.navbar-inverse {
+    background-color: transparent;
+    border-radius: 0px;
+    padding: 25px 10px;
+    margin-bottom: 0px;
+}
+
+nav.navbar.shrink {
+    background-color: #222;
+    padding: 10px;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+.navbar-inverse .navbar-brand:focus {
+    color: white;
+}
+.navbar-inverse .navbar-brand:hover {
+    color: #18bc9c;
+}
+/* Links */
+ul.nav.navbar-nav.navbar-right li a:hover {
+    color: #18bc9c;
+}
+ul.nav.navbar-nav.navbar-right li a:focus {
+    color: white;
+}
+
+.navbar-toggle {
+    border: none;
+    background: transparent !important;
+}
+.navbar-toggle:hover {
+    border: none;
+    background: transparent !important;
+}
+
+.navbar-inverse .navbar-nav>.open>a {
+    background-color: transparent;
+}
+.navbar-inverse .navbar-nav>.open>a:hover{
+    background-color: transparent;
+}
+.navbar-inverse .navbar-nav>.open>a:focus {
+    background-color: transparent;
+}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+    background-color: transparent;
+}
+ul.nav.navbar-nav.navbar-right li a:hover {
+    color: #18bc9c;
+}
+.icon-bar {
+    transition: all 0.2s;
+}
+.top-bar {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transform-origin: 10% 10%;
+    -ms-transform-origin: 10% 10%;
+    -moz-transform-origin: 10% 10%;
+    transform-origin: 10% 10%;
+}
+.mid-bar {
+    opacity: 0;
+}
+.bottom-bar {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transform-origin: 10% 90%;
+    -moz-transform-origin: 10% 90%;
+    -ms-transform-origin: 10% 90%;
+    transform-origin: 10% 90%;
+}
+
+.navbar-toggle.collapsed .top-bar {
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    transform: rotate(0);
+}
+.navbar-toggle.collapsed .mid-bar {
+    opacity: 1;
+}
+.navbar-toggle.collapsed .bottom-bar {
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    transform: rotate(0);
+}
+
+.navbar-inverse .navbar-collapse {
+    border-color: transparent;
+}
+
+
+/* PROFILE CSS */
+
+.profile {
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.profile-img-container {
+    display: block;
+    margin: 0 auto;
+}
+
+.name-heading {
+    margin: 0px;
+}
+
+.title-heading {
+    margin: 0px 0px 10px 0px;
+}
