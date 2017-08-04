@@ -118,10 +118,10 @@ ul.nav.navbar-nav.navbar-right li a:hover {
     background-color: #eee;
     padding: 20px;
     border-radius: 10px;
-    margin: 20px;
+    margin-top: 20px;
 }
 
-.profile-img-container {
+.profile-img-container img {
     display: block;
     margin: 0 auto;
 }
@@ -132,4 +132,52 @@ ul.nav.navbar-nav.navbar-right li a:hover {
 
 .title-heading {
     margin: 0px 0px 10px 0px;
+}
+
+.score {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.big-star {
+    font-size: 30px;
+    text-align: right;
+}
+
+.star-btn {
+    border-style: none;
+    background-color: transparent;
+}
+
+.dropdown-menu {
+    min-width: 400px;
+}
+
+.filter-heading {
+    color: black;
+}
+
+.filter-list {
+    padding-left: 10px;
+}
+
+.btn-filter {
+    background-color: #3f51b5 !important;
+    margin: 0px 0px 20px 20px;
+}
+
+.btn-filter:hover {
+    background-color: #3f51b5;
+    box-shadow: 0 14px 26px -12px rgba(21, 103, 140, 0.27), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(3, 169, 244, 0.2);
+}
+
+
+@media screen and (max-width: 480px) {
+    .score {
+        justify-content: flex-start;
+    }
 }
