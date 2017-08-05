@@ -1,3 +1,5 @@
+var bcrypt = require('bcrypt-nodejs');
+
 module.exports = function(sequelize, DataTypes) {
   var profile = sequelize.define("profile", {
     name: DataTypes.STRING,
@@ -6,8 +8,15 @@ module.exports = function(sequelize, DataTypes) {
     about: DataTypes.TEXT,
     linkedin_url: DataTypes.STRING,
     github_url: DataTypes.STRING,
-    personal_url: DataTypes.STRING
+    personal_url: DataTypes.STRING,
+    id: {type: DataTypes.STRING, unique: true, allowNull:false},
   });
+
+
+  // profile.hook("beforeCreate", function(profile){
+  //   console.log(bcrypt.hashSync(profile.password, bcrypt.genSaltSync(8)));
+  //   profile.password = bcrypt.hashSync(profile.password, bcrypt.genSaltSync(8));
+  // })
 
   // profile.associate = function(models) {
   //   // Associating Author with Posts

@@ -17,6 +17,10 @@ var PORT = process.env.PORT || 8000;
 // Requiring our models for syncing
 var db = require("./models");
 
+
+//Salt Complexity
+SALT_WORK_FACTOR = 12;
+
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,30 +49,30 @@ db.sequelize.sync().then(function() {
 	app.listen(PORT, function() {
 		console.log("App listening on PORT " + PORT);
 
-		db.profile.create({
-			name: "Blake",
-			img_url: "Google.com",
-			title: "fullstack developer",
-			about: "Hello my name is blake I am an aspiring developer",
-			linkedin_url: "linkedin.com",
-			github_url: "github.com",
-			personal_url: "blake.com"
-		}).then(function(profile) {
-			db.backend_skills.create({
-				mysql : true,
-				profileId: profile.id
-			});
+		// db.profile.create({
+		// 	name: "Blake",
+		// 	img_url: "Google.com",
+		// 	title: "fullstack developer",
+		// 	about: "Hello my name is blake I am an aspiring developer",
+		// 	linkedin_url: "linkedin.com",
+		// 	github_url: "github.com",
+		// 	personal_url: "blake.com"
+		// }).then(function(profile) {
+		// 	db.backend_skills.create({
+		// 		mysql : true,
+		// 		profileId: profile.id
+		// 	});
 
-			db.frontend_skill.create({
-				javascript: true,
-				profileId: profile.id
-			});
+		// 	db.frontend_skill.create({
+		// 		javascript: true,
+		// 		profileId: profile.id
+		// 	});
 
-			db.design_skills.create({
-				photoshop: true,
-				profileId: profile.id
-			});
+		// 	db.design_skills.create({
+		// 		photoshop: true,
+		// 		profileId: profile.id
+		// 	});
 
-		})
+		// })
 	});
 });
