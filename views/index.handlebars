@@ -7,49 +7,9 @@
 <div class="long">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 profile">
-                <div class="col-xs-2 profile-img-container">
-                    <img src="http://via.placeholder.com/150x150" class="img-responsive img-circle">
-                </div>
-                <div class="col-xs-8">
-                    <h2 class="name-heading">Name Here</h2>
-                    <h4 class="title-heading">Title Here</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-            </div>
-
-            <div class="col-xs-12 profile">
-                <div class="col-xs-2 profile-img-container">
-                    <img src="http://via.placeholder.com/150x150" class="img-responsive img-circle">
-                </div>
-                <div class="col-xs-8">
-                    <h2 class="name-heading">Name Here</h2>
-                    <h4 class="title-heading">Title Here</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-            </div>
-
-            <div class="col-xs-12 profile">
-                <div class="col-xs-2 profile-img-container">
-                    <img src="http://via.placeholder.com/150x150" class="img-responsive img-circle">
-                </div>
-                <div class="col-xs-8">
-                    <h2 class="name-heading">Name Here</h2>
-                    <h4 class="title-heading">Title Here</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-            </div>
-
-            <div class="col-xs-12 profile">
-                <div class="col-xs-2 profile-img-container">
-                    <img src="http://via.placeholder.com/150x150" class="img-responsive img-circle">
-                </div>
-                <div class="col-xs-8">
-                    <h2 class="name-heading">Name Here</h2>
-                    <h4 class="title-heading">Title Here</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-            </div>
+            {{#each profiles}}
+                {{> profile-parts/profile}}
+            {{/each}}
         </div>
     </div>
 </div>
