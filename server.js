@@ -17,6 +17,10 @@ var PORT = process.env.PORT || 8000;
 // Requiring our models for syncing
 var db = require("./models");
 
+
+//Salt Complexity
+SALT_WORK_FACTOR = 12;
+
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
