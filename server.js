@@ -45,30 +45,30 @@ db.sequelize.sync().then(function() {
 	app.listen(PORT, function() {
 		console.log("App listening on PORT " + PORT);
 
-		db.profile.create({
-			name: "Blake",
-			img_url: "Google.com",
-			title: "fullstack developer",
-			about: "Hello my name is blake I am an aspiring developer",
-			linkedin_url: "linkedin.com",
-			github_url: "github.com",
-			personal_url: "blake.com"
-		}).then(function(profile) {
-			db.backend_skills.create({
-				mysql : true,
-				profileId: profile.id
-			});
+		// db.profile.create({
+		// 	name: "Blake",
+		// 	img_url: "Google.com",
+		// 	title: "fullstack developer",
+		// 	about: "Hello my name is blake I am an aspiring developer",
+		// 	linkedin_url: "linkedin.com",
+		// 	github_url: "github.com",
+		// 	personal_url: "blake.com"
+		// }).then(function(profile) {
+		// 	db.backend_skills.create({
+		// 		mysql : true,
+		// 		profileId: profile.id
+		// 	});
 
-			db.frontend_skill.create({
-				javascript: true,
-				profileId: profile.id
-			});
+		// 	db.frontend_skill.create({
+		// 		javascript: true,
+		// 		profileId: profile.id
+		// 	});
 
-			db.design_skills.create({
-				photoshop: true,
-				profileId: profile.id
-			});
+		// 	db.design_skills.create({
+		// 		photoshop: true,
+		// 		profileId: profile.id
+		// 	});
 
-		})
+		// })
 	});
 });
