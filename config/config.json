@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Soithan1995",
+    "password": null,
     "database": "clickedin",
     "host": "127.0.0.1",
     "dialect": "mysql"

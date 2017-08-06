@@ -6,9 +6,9 @@ module.exports = function(app) {
     app.get('/', function(req, res) {
 
         db.profile.findAll({}).then(function(profiles){
-            res.render('index', { profiles });
+            res.render('index', { profiles, user: req.user });
         });
-        
+
     });
 
     app.get('/signup', function(req,res){
