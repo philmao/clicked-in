@@ -19,7 +19,7 @@ passport.use(new LinkedInStrategy({
     consumerKey: keys.linkedinClientID,
     consumerSecret: keys.linkedinClientSecret,
     callbackURL: '/auth/linkedin/callback',
-    profileFields: ['id', 'first-name', 'last-name', 'email-address', 'headline', 'summary', 'picture-url', 'public-profile-url']
+    profileFields: ['id', 'first-name', 'last-name', 'email-address', 'headline', 'summary', 'picture-urls::(original)', 'public-profile-url']
 }, (accessToken, refreshToken, profile, done) => {
     // console.log(accessToken);
     // console.log(refreshToken);

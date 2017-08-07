@@ -21,7 +21,7 @@ module.exports = app => {
                 },
                 'defaults': {
                     'name': req.user.displayName,
-                    'img_url': req.user._json.pictureUrl,
+                    'img_url': req.user._json.pictureUrls.values[0],
                     'title': req.user._json.headline,
                     'about': req.user._json.summary,
                     'linkedin_url': req.user._json.publicProfileUrl,

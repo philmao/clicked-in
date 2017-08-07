@@ -4,7 +4,7 @@ NAVBAR CSS
 
 body {
     background-color: #fff;
-    padding-top: 120px;
+    padding-top: 90px;
 }
 nav.navbar {
    -webkit-transition: all 0.4s ease;
@@ -175,6 +175,22 @@ ul.nav.navbar-nav.navbar-right li a:hover {
     box-shadow: 0 14px 26px -12px rgba(21, 103, 140, 0.27), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(3, 169, 244, 0.2);
 }
 
+
+/* SIGNUP PAGE - CSS */
+
+.register-page-title {
+    color: white;
+}
+
+div.header {
+    height: 400px;
+    padding-top: 90px;
+}
+
+.sign-up-header {
+    background-image: url('../img/stars-pexel.jpg');
+    background-position: center;
+}
 
 @media screen and (max-width: 480px) {
     .score {

@@ -11,6 +11,10 @@ module.exports = function(app) {
 
     });
 
+    app.get('/linkedin-signup', function(req, res) {
+        res.render('sign-up');
+    });
+
     app.get('/signup', function(req,res){
     	res.sendFile(path.join(__dirname+'/signup.html'));
     })
