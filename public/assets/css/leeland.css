@@ -4,7 +4,7 @@ NAVBAR CSS
 
 body {
     background-color: #fff;
-    padding-top: 90px;
+    /*padding-top: 90px;*/
 }
 nav.navbar {
    -webkit-transition: all 0.4s ease;
@@ -119,6 +119,7 @@ ul.nav.navbar-nav.navbar-right li a:hover {
     padding: 20px;
     border-radius: 10px;
     margin-top: 20px;
+    box-shadow: 1px 5px 25px rgba(0, 0, 0, 0.3);
 }
 
 .profile-img-container img {
@@ -183,13 +184,17 @@ ul.nav.navbar-nav.navbar-right li a:hover {
 }
 
 div.header {
-    height: 400px;
-    padding-top: 90px;
+    height: 450px;
+    padding-top: 150px;
 }
 
 .sign-up-header {
     background-image: url('../img/stars-pexel.jpg');
     background-position: center;
+}
+
+label {
+    padding-left: 0px;
 }
 
 @media screen and (max-width: 480px) {

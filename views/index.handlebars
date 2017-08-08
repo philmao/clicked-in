@@ -4,15 +4,14 @@
     }
 </style>
 
-<div class="long">
-    <div class="container">
-        <div class="row">
-            {{#each profiles}}
-                {{> profile-parts/profile}}
-            {{/each}}
+<div class="main main-raised">
+    <div class="long">
+        <div class="container">
+            <div class="row">
+                {{#each profiles}}
+                    {{> profile-parts/profile}}
+                {{/each}}
+            </div>
         </div>
     </div>
 </div>
-
-{{user.id}}
-{{user.displayName}}
