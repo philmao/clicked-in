@@ -34,4 +34,10 @@ module.exports = app => {
             res.redirect('/');
         }
     );
+
+    app.post('/login',passport.authenticate('local-login',{
+        successRedirect: "/myprofile",
+        failureRedirect:"/login",
+        failureFlash: "wrong"
+    }));
 };

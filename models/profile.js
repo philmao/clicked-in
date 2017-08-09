@@ -9,16 +9,31 @@ module.exports = function(sequelize, DataTypes) {
     linkedin_url: DataTypes.STRING,
     github_url: DataTypes.STRING,
     personal_url: DataTypes.STRING,
-    linkedinId: {type: DataTypes.STRING, unique: true, allowNull:false},
-  }, {
-    timestamps: false
-  });
+    linkedin_id: {type: DataTypes.STRING, unique: true},
+    username: {type: DataTypes.STRING, unique: true},
+    password: {type: DataTypes.STRING, unique: true}
+  },
+	{
+    timestamps: false,
+		classMethods: {
+			validPassword: function(password, passwd, done, user){
+				bcrypt.compare(password, passwd, function(err, isMatch){
+					if (err) console.log(err)
+					if (isMatch) {
+						return done(null, user)
+					} else {
+						return done(null, false)
+					}
+				})
+			}
+		}
+	});
 
 
-  // profile.hook("beforeCreate", function(profile){
-  //   console.log(bcrypt.hashSync(profile.password, bcrypt.genSaltSync(8)));
-  //   profile.password = bcrypt.hashSync(profile.password, bcrypt.genSaltSync(8));
-  // })
+  profile.hook("beforeCreate", function(profile){
+    console.log(bcrypt.hashSync(profile.password, bcrypt.genSaltSync(8)));
+    profile.password = bcrypt.hashSync(profile.password, bcrypt.genSaltSync(8));
+  })
 
   // profile.associate = function(models) {
   //   // Associating Profile with skills
