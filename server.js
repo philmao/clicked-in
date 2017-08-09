@@ -13,6 +13,9 @@ var path = require("path");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
 var methodOverride = require('method-override');
+var passport = require('passport');
+var session = require("express-session");
+var flash = require("express-flash");
 
 require('./services/passport');
 
@@ -98,12 +101,28 @@ app.set("view engine", "handlebars");
 // Serve static content for the app from the "public" directory in the application directory.
 app.use('/public', express.static(__dirname + "/public"));
 
+// required for passport
+app.use(session({ 
+	secret: 'ilovescotchscotchyscotchscotch',
+	resave: false,
+    saveUninitialized: true
+ })); // session secret
+app.use(flash()); // use connect-flash for flash messages stored in session
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
+
 // Routes
 // =============================================================
 require("./routes/html-routes.js")(app);
 require("./routes/auth-routes.js")(app);
 // require("./routes/author-api-routes.js")(app);
 // require("./routes/post-api-routes.js")(app);
+
+
+
+
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
