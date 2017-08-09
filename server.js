@@ -102,7 +102,7 @@ app.set("view engine", "handlebars");
 app.use('/public', express.static(__dirname + "/public"));
 
 // required for passport
-app.use(session({ 
+app.use(session({
 	secret: 'ilovescotchscotchyscotchscotch',
 	resave: false,
     saveUninitialized: true
