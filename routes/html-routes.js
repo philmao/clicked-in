@@ -3,14 +3,27 @@ var path =  require("path");
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
 
-module.exports = function(app,passport) {
-    
+module.exports = function(app) {
+
+    // root route - runs Sequelize findAll() to show all profiles
     app.get('/', function(req, res) {
         
         db.profile.findAll({}).then(function(profiles){
-            res.render('index', { profiles });
+            res.render('index', { profiles, user: req.user, title: 'All Profiles', authentication: req.isAuthenticated() });
         });
-        
+
+    });
+
+    // linkedin-signup - renders sign-up page to register a new profile
+    app.get('/linkedin-signup', function(req, res) {
+        res.render('sign-up', { user: req.user, title: 'Register Your Profile', authentication: req.isAuthenticated() });
+    });
+
+    // signup-submit - posts a new profile to db
+    app.post('/signup-submit', function(req, res) {
+        // console.log(res);
+        console.log(req.user);
+        console.log(req.body);
     });
     
     // Serialize Sessions
