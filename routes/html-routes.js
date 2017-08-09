@@ -7,9 +7,19 @@ module.exports = function(app) {
 
     // root route - runs Sequelize findAll() to show all profiles
     app.get('/', function(req, res) {
+        console.log(req.user);
+        var linkedinUser;
+
+        if (req.isAuthenticated()) {
+            if (req.user.provider === 'linkedin') {
+                linkedinUser = true;
+            } else {
+                linkedinUser = false;
+            }
+        }
 
         db.profile.findAll({}).then(function(profiles){
-            res.render('index', { profiles, user: req.user, title: 'All Profiles', authentication: req.isAuthenticated() });
+            res.render('index', { profiles, user: req.user, linkedinUser, title: 'All Profiles', authentication: req.isAuthenticated() });
         });
 
     });
@@ -39,7 +49,7 @@ module.exports = function(app) {
         }
     })
 
-    
+
 
     app.get('/myprofile', function(req,res){
         if(req.isAuthenticated()){
@@ -85,7 +95,7 @@ module.exports = function(app) {
                 photoshop: true,
                 profileId: profile.id
             });
-
+            res.redirect('/login');
         })
     })
 
