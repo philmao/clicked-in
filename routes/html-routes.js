@@ -7,7 +7,7 @@ module.exports = function(app) {
 
     // root route - runs Sequelize findAll() to show all profiles
     app.get('/', function(req, res) {
-        
+
         db.profile.findAll({}).then(function(profiles){
             res.render('index', { profiles, user: req.user, title: 'All Profiles', authentication: req.isAuthenticated() });
         });
@@ -25,39 +25,11 @@ module.exports = function(app) {
         console.log(req.user);
         console.log(req.body);
     });
-    
-    // Serialize Sessions
-    passport.serializeUser(function(user, done){
-        done(null, user);
-    });
-    
-    //Deserialize Sessions
-    passport.deserializeUser(function(user, done){
-            done(null, user);
-    });
-    
+
+
     // For Authentication Purposes
-    passport.use('local-login',new LocalStrategy(
-        function(username, password, done){
-            db.profile.find({where: {username: username}}).then(function(user){
-                console.log(user)
-                if(!user){
-                    return done(null,false,{message:"Unknown username"})
-                }
-                console.log("Database PW:"+user.password)
-                console.log("Entered password:"+ password);
-                //Check if password is valid and return done(user) with user object if it is
-                var pwMatched = bcrypt.compareSync(password,user.password);
-                if(pwMatched){
-                    return done(null,user);
-                }
-                if(!pwMatched){
-                    return done(null,false,{message: "Wrong password"});
-                }
-            });
-        }
-    ));
-    
+
+
     app.get('/login', function(req,res){
         if(req.isAuthenticated()){
             res.redirect("/myprofile");
@@ -66,13 +38,9 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname+'/login.html'));
         }
     })
+
     
-    app.post('/login',passport.authenticate('local-login',{
-        successRedirect: "/myprofile",
-        failureRedirect:"/login",
-        failureFlash: "wrong"
-    }));
-    
+
     app.get('/myprofile', function(req,res){
         if(req.isAuthenticated()){
             res.json(req.user)
@@ -80,12 +48,12 @@ module.exports = function(app) {
             res.redirect("/login")
         }
     })
-    
+
     //User name and password sign up
     app.get('/signup', function(req,res){
         res.sendFile(path.join(__dirname+'/signup.html'));
     })
-    
+
     app.post("/register",function(req,res){
         console.log(req.body.username);
         console.log(req.body.password);
@@ -102,23 +70,23 @@ module.exports = function(app) {
         }).then(function(profile) {
             console.log(profile.id);
             console.log(profile.dataValues.id);
-            
+
             db.backend_skills.create({
                 mysql : true,
                 profileId: profile.id
             });
-            
+
             db.frontend_skill.create({
                 javascript: true,
                 profileId: profile.id
             });
-            
+
             db.design_skills.create({
                 photoshop: true,
                 profileId: profile.id
             });
-            
+
         })
     })
-    
+
 };
