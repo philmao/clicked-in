@@ -24,7 +24,15 @@
                         <a href="/auth/linkedin">Sign In (LinkedIN)</a>
                     {{/unless}}
                     {{#if authentication}}
-                        <a href="#" data-toggle="acc-tooltip" data-placement="bottom" title="View Account">{{user.displayName}}</a>
+                        <a href="#" data-toggle="acc-tooltip" data-placement="bottom" title="View Account">
+                            {{#if linkedinUser}}
+                                {{user.displayName}}
+                            {{/if}}
+
+                            {{#unless linkedinUser}}
+                                {{user.name}}
+                            {{/unless}}
+                        </a>
                     {{/if}}
                 </li>
             </ul>

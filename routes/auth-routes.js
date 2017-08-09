@@ -17,7 +17,7 @@ module.exports = app => {
             // Successful authentication, redirect home.
             db.profile.findOrCreate({
                 'where': {
-                    'linkedinId': req.user.id
+                    'linkedin_id': req.user.id
                 },
                 'defaults': {
                     'name': req.user.displayName,
@@ -27,7 +27,7 @@ module.exports = app => {
                     'linkedin_url': req.user._json.publicProfileUrl,
                     'github_url': 'www.github.com',
                     'personal_url': 'www.profile.com',
-                    'linkedinId': req.user.id
+                    'linkedin_id': req.user.id
                 }
             });
             console.log(req);
