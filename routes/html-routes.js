@@ -85,7 +85,7 @@ module.exports = function(app) {
                 photoshop: true,
                 profileId: profile.id
             });
-
+            res.redirect("/login");
         })
     })
 
