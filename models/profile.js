@@ -10,6 +10,8 @@ module.exports = function(sequelize, DataTypes) {
     github_url: DataTypes.STRING,
     personal_url: DataTypes.STRING,
     linkedinId: {type: DataTypes.STRING, unique: true, allowNull:false},
+  }, {
+    timestamps: false
   });
 
 
@@ -19,32 +21,32 @@ module.exports = function(sequelize, DataTypes) {
   // })
 
   // profile.associate = function(models) {
-  //   // Associating Author with Posts
-  //   // When an Author is deleted, also delete any associated Posts
+  //   // Associating Profile with skills
+  //   // When an Profile is deleted, also delete any associated skills
   //   profile.hasMany(models.project, {
   //     onDelete: "cascade"
   //   });
   // };
 
   profile.associate = function(models) {
-    // Associating Author with Posts
-    // When an Author is deleted, also delete any associated Posts
+    // Associating Profile with skills
+    // When an Profile is deleted, also delete any associated skills
     profile.hasMany(models.frontend_skill, {
       onDelete: "cascade"
     });
   };
 
   profile.associate = function(models) {
-    // Associating Author with Posts
-    // When an Author is deleted, also delete any associated Posts
+    // Associating Profile with skills
+    // When an Profile is deleted, also delete any associated skills
     profile.hasMany(models.backend_skills, {
       onDelete: "cascade"
     });
   };
 
   profile.associate = function(models) {
-    // Associating Author with Posts
-    // When an Author is deleted, also delete any associated Posts
+    // Associating Profile with skills
+    // When an Profile is deleted, also delete any associated skills
     profile.hasMany(models.design_skills, {
       onDelete: "cascade"
     });

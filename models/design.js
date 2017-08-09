@@ -24,11 +24,13 @@ module.exports = function(sequelize, DataTypes) {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     }
+  }, {
+    timestamps: false
   });
 
   design_skills.associate = function(models) {
-    // Associating Author with Posts
-    // When an Author is deleted, also delete any associated Posts
+    // Associating Profile with skills
+    // When an Profile is deleted, also delete any associated skills
     design_skills.belongsTo(models.profile, {
       onDelete: "cascade"
     });
