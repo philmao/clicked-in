@@ -14,10 +14,10 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Home<span class="sr-only">(current)</span></a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    {{> navbar-filter}}
+                    <a href="#" class="dropdown-toggle search-button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         Search  <i class="fa fa-search" aria-hidden="true"></i></span>
                     </a>
-                    {{> navbar-filter}}
                 </li>
                 <li>
                     {{#unless authentication}}
@@ -39,3 +39,56 @@
         </div>
     </div>
 </nav>
+<script>
+    var displayContent = function () {
+        var backendArray = ["mysql", "node", "php", "express", "mongodb", "java", "python", "c_sharp"];
+        var frontendArray = ["html", "css", "javascript", "ajax", "jquery", "bootstrap", "react", "angular"];
+        var designArray = ["photoshop", "gimp", "illustrator", "inkscape", "coreldraw", "adobe_indesign"];
+
+        var backSkills = "<h3 class='filter-heading'>Backend Skills</h3>";
+        backSkills += "<ul class='filter-list'>";
+        for(var i=0; i < backendArray.length; i++) {
+            backSkills += "<li><div class='checkbox'><label>";
+            backSkills += "<input type='checkbox' name='check-" + backendArray[i] + "'>";
+            backSkills += "<span class='checkbox-material'><span class='check'></span></span>";
+            backSkills += backendArray[i];
+            backSkills += "</label></div></li>"
+        };
+        backSkills += "</ul>";
+        $("#backend_skills").append(backSkills);
+
+        var frontSkills = "<h3 class='filter-heading'>Frontend Skills</h3>";
+        frontSkills += "<ul class='filter-list'>";
+        for(var i=0; i < frontendArray.length; i++) {
+            frontSkills += "<li><div class='checkbox'><label>";
+            frontSkills += "<input type='checkbox' name='check-" + frontendArray[i] + "'>";
+            frontSkills += "<span class='checkbox-material'><span class='check'></span></span>";
+            frontSkills += frontendArray[i];
+            frontSkills += "</label></div></li>"
+        };
+        frontSkills += "</ul>";
+        $("#frontend_skills").append(frontSkills);
+
+        var designSkills = "<h3 class='filter-heading'>Design Skills</h3>";
+        designSkills += "<ul class='filter-list'>";
+        for(var i=0; i < designArray.length; i++) {
+            designSkills += "<ul class='filter-list'>";
+            designSkills += "<li><div class='checkbox'><label>";
+            designSkills += "<input type='checkbox' name='check-" + designArray[i] + "'>";
+            designSkills += "<span class='checkbox-material'><span class='check'></span></span>";
+            designSkills += designArray[i];
+            designSkills += "</label></div></li>"
+        };
+        designSkills += "</ul>";
+        $("#design_skills").append(designSkills);
+
+    };
+
+    $(".search-button").on('click', function () {
+        $("#backSkills").empty();
+        $("#frontSkills").empty();
+        $("#designSkills").empty();
+        displayContent();
+    });
+
+</script>
