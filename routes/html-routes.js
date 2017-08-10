@@ -44,13 +44,13 @@ module.exports = function(app) {
         if(req.isAuthenticated()){
             res.redirect("/myprofile");
         } else {
-        req.flash("error")
-        res.sendFile(path.join(__dirname+'/login.html'));
+            req.flash("error")
+            res.sendFile(path.join(__dirname+'/login.html'));
         }
     })
 
 
-
+    //Send back data through /myprofile url after User is logged in
     app.get('/myprofile', function(req,res){
         if(req.isAuthenticated()){
             res.json(req.user)
@@ -99,6 +99,61 @@ module.exports = function(app) {
             res.redirect('/login');
 
         })
+    })
+
+    app.post("/endorsement", function(req,res){
+        //var endorsed_username = ....
+        var endorser;
+        var endorsed_username;
+
+        //tick endorsement up by 1
+        if(req.isAuthenticated()){
+            //
+            db.profile.findOne({
+                username : endorser
+            }).then(function(profile){
+                var endorsed = false;
+                var endorsed_ppl = profile.endorsed_people.split(",").trim();
+
+                //Search if user has endorsed this user before
+                for(i = 0; i < endorsed_ppl.length){
+                    if(endorsed_username == endorsed_ppl[i]){
+                        endorsed = true;
+                    }
+                }
+
+                //+1 to endorsed username if not endorsed already by endorser
+                if(endorsed == false){
+                    db.profile.findOne({
+                        username = endorsed_username
+                    }).then(function(profile){
+                        profile.updateAttributes({
+                            endorsement : profile.endorsement++;
+                        })
+                    })
+
+                    //Add to list of endorsed people
+                    db.profile.findOne({
+                        username = endorser
+                    }).then(function(profile){
+                        var endorsed_ppl = profile.endorsed_people;
+                        endorsed_ppl+=endorsed_username+","
+                        profile.updateAttributes({
+                            endorsed_people :  endorsed_ppl
+                        })
+                    })
+                }
+            })
+
+
+            // db.profile.findOne({
+            //     username = endorsed_username
+            // }).then(function(profile){
+            //     endorsement : profile.endorsement++;
+            // })
+        } else {
+            res.redirect("/login")
+        }
     })
 
 };

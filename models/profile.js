@@ -9,6 +9,8 @@ module.exports = function(sequelize, DataTypes) {
     linkedin_url: DataTypes.STRING,
     github_url: DataTypes.STRING,
     personal_url: DataTypes.STRING,
+    endorsements: DataTypes.INTEGER,
+    endorsed_people: DataTypes.TEXT,
     linkedin_id: {type: DataTypes.STRING, unique: true},
     username: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING, unique: true}
