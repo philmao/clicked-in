@@ -99,6 +99,20 @@ let hbs = exphbs.create({
     equals: function(string1,string2){
         var boolean = (string1==string2)
         return boolean;
+    },
+    partOf: function(profile_string,endorsed_string){
+        var endorsed = false;
+        if(endorsed_string == undefined){
+            return false;
+        } else {
+        var array = endorsed_string.split(",");
+        for(var i = 0; i < array.length;i++){
+            if(profile_string == array[i]){
+                endorsed = true;
+            }
+        }
+        return endorsed;
+        }
     }
   }
 })
@@ -136,7 +150,7 @@ require("./routes/api-routes.js")(app);
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 
-db.sequelize.sync({force: true}).then(function() {
+db.sequelize.sync({}).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });
