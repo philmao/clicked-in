@@ -1,93 +1,93 @@
 module.exports = function(sequelize, DataTypes) {
   var Skill = sequelize.define("Skill", {
     // Frontend skills
-    html: {
+    front_html: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    css: {
+    front_css: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    javascript: {
+    front_javascript: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    ajax: {
+    front_ajax: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    jquery: {
+    front_jquery: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    bootstrap: {
+    front_bootstrap: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    react: {
+    front_react: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    angular: {
+    front_angular: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
     // Backend skills
-    mysql: {
+    back_mysql: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    node: {
+    back_node: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    php: {
+    back_php: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    express: {
+    back_express: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    mongodb: {
+    back_mongodb: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    java: {
+    back_java: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    python: {
+    back_python: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    c_sharp: {
+    back_c_sharp: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
     // Design skills
-    photoshop: {
+    design_photoshop: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    gimp: {
+    design_gimp: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    illustrator: {
+    design_illustrator: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    inkscape: {
+    design_inkscape: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    coreldraw: {
+    design_coreldraw: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    adobe_indesign: {
+    design_adobe_indesign: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     }
