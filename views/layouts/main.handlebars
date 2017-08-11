@@ -20,17 +20,17 @@
 
 <body>
 
-    {{> nav}}
-
-    {{> jumbotron}}
-
-    {{{body}}}
-
     <script src="../public/assets/js/jquery.min.js"></script>
     <script src="../public/assets/js/bootstrap.min.js"></script>
     <script src="../public/assets/js/material-kit.js"></script>
     <script src="../public/assets/js/material.min.js"></script>
     <script src="../public/assets/js/nouislider.min.js"></script>
+
+    {{> nav}}
+
+    {{> jumbotron}}
+
+    {{{body}}}
 
     <script>
         $(window).scroll(function() {

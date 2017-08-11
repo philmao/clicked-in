@@ -4,24 +4,28 @@
             <form class="form-horizontal" role="form" action="/signup-submit" method="post">
                 <h2>Registration Form</h2>
                 <div class="form-group">
+                    <label for="username-form-input">Name</label>
+                    <input type="text" class="form-control" id="username-form-input" name="username" placeholder="username" required>
+                </div>
+                <div class="form-group">
                     <label for="name-form-input">Name</label>
-                    <input type="text" class="form-control" id="name-form-input" name="name" placeholder="John Doe">
+                    <input type="text" class="form-control" id="name-form-input" name="name" placeholder="John Doe" value="{{user.displayName}}" required>
                 </div>
                 <div class="form-group">
                     <label for="img-form-input">Image URL</label>
-                    <input type="text" class="form-control" id="img-form-input" name="img_url" placeholder="Image URL">
+                    <input type="text" class="form-control" id="img-form-input" name="img_url" placeholder="Image URL" value="{{img_url}}" required>
                 </div>
                 <div class="form-group">
                     <label for="title-form-input">Title/Headline</label>
-                    <input type="text" class="form-control" id="title-form-input" name="title" placeholder="Backend Web Developer">
+                    <input type="text" class="form-control" id="title-form-input" name="title" placeholder="Backend Web Developer" value="{{user._json.headline}}" required>
                 </div>
                 <div class="form-group">
                     <label for="">About You</label>
-                    <textarea class="form-control" name="about" rows="3"></textarea>
+                    <textarea class="form-control" name="about" rows="5" required>{{user._json.summary}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="lin-url-form-input">LinkedIn Profile URL</label>
-                    <input type="text" class="form-control" id="lin-url-form-input" name="linkedin_url" placeholder="LinkedIn Profile URL">
+                    <input type="text" class="form-control" id="lin-url-form-input" name="linkedin_url" placeholder="LinkedIn Profile URL" value="{{user._json.publicProfileUrl}}">
                 </div>
                 <div class="form-group">
                     <label for="github-url-form-input">Github Profile URL</label>
@@ -36,49 +40,49 @@
                     <h3>Frontend Skills</h3>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="html">
+                            <input type="checkbox" name="front-html">
                             HTML
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="css">
+                            <input type="checkbox" name="front-css">
                             CSS
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="javascript">
+                            <input type="checkbox" name="front-javascript">
                             Javascript
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="ajax">
+                            <input type="checkbox" name="front-ajax">
                             AJAX
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="jquery">
+                            <input type="checkbox" name="front-jquery">
                             jQuery
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="bootstrap">
+                            <input type="checkbox" name="front-bootstrap">
                             Bootstrap
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="react">
+                            <input type="checkbox" name="front-react">
                             React.js
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="angular">
+                            <input type="checkbox" name="front-angular">
                             Angular.js
                         </label>
                     </div>
@@ -87,51 +91,102 @@
                     <h3>Backend Skills</h3>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="mysql">
+                            <input type="checkbox" name="back-mysql">
                             MySQL
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="node">
+                            <input type="checkbox" name="back-node">
                             Node.js
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="php">
+                            <input type="checkbox" name="back-php">
                             PHP
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="express">
+                            <input type="checkbox" name="back-express">
                             Express.js
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="mongodb">
+                            <input type="checkbox" name="back-mongodb">
                             MongoDB
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="check-java">
+                            <input type="checkbox" name="back-java">
                             Java
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="python">
+                            <input type="checkbox" name="back-python">
                             Python
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="ruby">
-                            Ruby
+                            <input type="checkbox" name="back-c_sharp">
+                            C#
                         </label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <h3>Projects</h3>
+                    <div class="col-md-4">
+                        <div class="add-proj">
+                            <div class="form-group">
+                                <label for="proj1-name-form-input">Project Name</label>
+                                <input type="text" class="form-control" id="proj1-name-form-input" name="proj-name" placeholder="Project Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="proj1-img-form-input">Project Image Thumbnail</label>
+                                <input type="text" class="form-control" id="proj1-img-form-input" name="proj-img_url" placeholder="Image URL">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Project Description</label>
+                                <textarea class="form-control" name="proj-description" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="add-proj">
+                            <div class="form-group">
+                                <label for="proj2-name-form-input">Project Name</label>
+                                <input type="text" class="form-control" id="proj2-name-form-input" name="proj-name" placeholder="Project Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="proj2-img-form-input">Project Image Thumbnail</label>
+                                <input type="text" class="form-control" id="proj2-img-form-input" name="proj-img_url" placeholder="Image URL">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Project Description</label>
+                                <textarea class="form-control" name="proj-description" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="add-proj">
+                            <div class="form-group">
+                                <label for="proj3-name-form-input">Project Name</label>
+                                <input type="text" class="form-control" id="proj3-name-form-input" name="proj-name" placeholder="Project Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="proj3-img-form-input">Project Image Thumbnail</label>
+                                <input type="text" class="form-control" id="proj3-img-form-input" name="proj-img_url" placeholder="Image URL">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Project Description</label>
+                                <textarea class="form-control" name="proj-description" rows="5"></textarea>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <button type="submit" name="button" class="btn btn-info">Create Profile</button>

@@ -1,11 +1,26 @@
-/*=======================
-NAVBAR CSS
-========================*/
+
 
 body {
     background-color: #fff;
     /*padding-top: 90px;*/
 }
+
+.list {
+    list-style-type: none;
+    padding-left: 5px;
+}
+
+.is-flexed-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/*=======================
+NAVBAR CSS
+========================*/
+
+
 nav.navbar {
    -webkit-transition: all 0.4s ease;
    transition: all 0.4s ease;
@@ -112,7 +127,7 @@ ul.nav.navbar-nav.navbar-right li a:hover {
 }
 
 
-/* PROFILE CSS */
+/* PROFILE CSS - Main Page */
 
 .profile {
     background-color: #eee;
@@ -120,6 +135,10 @@ ul.nav.navbar-nav.navbar-right li a:hover {
     border-radius: 10px;
     margin-top: 20px;
     box-shadow: 1px 5px 25px rgba(0, 0, 0, 0.3);
+}
+
+a .profile {
+    color: black;
 }
 
 .profile-img-container img {
@@ -155,7 +174,7 @@ ul.nav.navbar-nav.navbar-right li a:hover {
 }
 
 .dropdown-menu {
-    min-width: 400px;
+    min-width: 600px;
 }
 
 .filter-heading {
@@ -193,6 +212,10 @@ div.header {
     background-position: center;
 }
 
+.add-proj {
+    padding: 0px 20px;
+}
+
 label {
     padding-left: 0px;
 }
@@ -201,4 +224,33 @@ label {
     .score {
         justify-content: flex-start;
     }
+}
+
+/* VIEW PROFILE PAGE - CSS*/
+
+.profile-view {
+    margin-top: -50px !important;
+    padding-top: 0px !important;
+}
+
+.view-profile-img {
+    display: block;
+    margin: -125px auto 0px auto;
+    width: 250px;
+    height: 250px;
+    border: solid 5px darkgrey;
+}
+
+.profile-view-name {
+    margin-bottom: 0px;
+}
+
+.profile-view-title {
+    margin-top: 0px;
+}
+
+.project-img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
 }

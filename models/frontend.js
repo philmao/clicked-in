@@ -32,16 +32,16 @@ module.exports = function(sequelize, DataTypes) {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     }
+  }, {
+    timestamps: false
   });
 
   frontend_skill.associate = function(models) {
-    // Associating Author with Posts
-    // When an Author is deleted, also delete any associated Posts
     frontend_skill.belongsTo(models.profile, {
       onDelete: "cascade"
     });
   };
 
-  
+
   return frontend_skill;
 };
