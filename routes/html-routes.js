@@ -26,12 +26,14 @@ module.exports = function(app) {
         var linkedinUser = checkForLinkedInUser(req);
 
         db.profile.findAll({}).then(function(profiles){
+
+            var endorsed = 'phil,david,blake'.split(',');
             res.render('index', {
                 profiles,
                 user: req.user,
                 linkedinUser,
                 title: 'All Profiles',
-                authentication: req.isAuthenticated()
+                authentication: req.isAuthenticated(),
             });
         });
 
