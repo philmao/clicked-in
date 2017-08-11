@@ -76,7 +76,7 @@ module.exports = function(sequelize, DataTypes) {
   };
 
   profile.associate = function(models) {
-      profile.hasMany(models.project, {
+      profile.hasMany(models.Project, {
           onDelete: "cascade"
       });
   };
