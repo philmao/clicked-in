@@ -3,6 +3,8 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     img_url: DataTypes.STRING,
     description: DataTypes.TEXT
+  }, {
+    timestamps: false
   });
 
   project.associate = function(models) {

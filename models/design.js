@@ -1,5 +1,72 @@
 module.exports = function(sequelize, DataTypes) {
-  var design_skills = sequelize.define("design_skills", {
+  var Skill = sequelize.define("Skill", {
+    // Frontend skills
+    html: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    css: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    javascript: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    ajax: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    jquery: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    bootstrap: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    react: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    angular: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    // Backend skills
+    mysql: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    node: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    php: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    express: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    mongodb: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    java: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    python: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    c_sharp: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    // Design skills
     photoshop: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
@@ -24,16 +91,18 @@ module.exports = function(sequelize, DataTypes) {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     }
+  }, {
+    timestamps: false
   });
 
-  design_skills.associate = function(models) {
-    // Associating Author with Posts
-    // When an Author is deleted, also delete any associated Posts
-    design_skills.belongsTo(models.profile, {
+  Skill.associate = function(models) {
+    // Associating Profile with skills
+    // When an Profile is deleted, also delete any associated skills
+    Skill.belongsTo(models.profile, {
       onDelete: "cascade"
     });
   };
 
   
-  return design_skills;
+  return Skill;
 };
