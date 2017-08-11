@@ -43,28 +43,35 @@ module.exports = function(sequelize, DataTypes) {
   //   });
   // };
 
-  // profile.associate = function(models) {
-  //   // Associating Profile with skills
-  //   // When an Profile is deleted, also delete any associated skills
-  //   profile.hasMany(models.Frontend_skill, {
-  //     onDelete: "cascade"
-  //   });
-  // };
-
-  // profile.associate = function(models) {
-  //   // Associating Profile with skills
-  //   // When an Profile is deleted, also delete any associated skills
-  //   profile.hasMany(models.Backend_skills, {
-  //     onDelete: "cascade"
-  //   });
-  // };
-
   profile.associate = function(models) {
     // Associating Profile with skills
     // When an Profile is deleted, also delete any associated skills
     profile.hasMany(models.Skill, {
       onDelete: "cascade"
     });
+  }
+  profile.associate = function(models) {
+    profile.hasMany(models.frontend_skill, {
+      onDelete: "cascade"
+    });
+  };
+
+  profile.associate = function(models) {
+    profile.hasMany(models.backend_skill, {
+      onDelete: "cascade"
+    });
+  };
+
+  profile.associate = function(models) {
+    profile.hasMany(models.design_skills, {
+      onDelete: "cascade"
+    });
+  };
+
+  profile.associate = function(models) {
+      profile.hasMany(models.project, {
+          onDelete: "cascade"
+      });
   };
 
   return profile;

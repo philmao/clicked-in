@@ -37,13 +37,11 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   frontend_skill.associate = function(models) {
-    // Associating Profile with skills
-    // When an Profile is deleted, also delete any associated skills
     frontend_skill.belongsTo(models.profile, {
       onDelete: "cascade"
     });
   };
 
-  
+
   return frontend_skill;
 };

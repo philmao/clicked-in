@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var backend_skills = sequelize.define("backend_skills", {
+  var backend_skill = sequelize.define("backend_skill", {
     mysql: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
@@ -36,14 +36,15 @@ module.exports = function(sequelize, DataTypes) {
     timestamps: false
   });
 
-  backend_skills.associate = function(models) {
-    // Associating Profile with skills
-    // When an Profile is deleted, also delete any associated skills
-    backend_skills.belongsTo(models.profile, {
+
+  backend_skill.associate = function(models) {
+    // Associating Author with Posts
+    // When an Author is deleted, also delete any associated Posts
+    backend_skill.belongsTo(models.profile, {
       onDelete: "cascade"
     });
   };
 
-  
-  return backend_skills;
+
+  return backend_skill;
 };
