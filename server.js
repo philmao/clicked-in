@@ -116,44 +116,13 @@ app.use(passport.session()); // persistent login sessions
 // =============================================================
 require("./routes/html-routes.js")(app);
 require("./routes/auth-routes.js")(app);
-// require("./routes/author-api-routes.js")(app);
-// require("./routes/post-api-routes.js")(app);
-
-
-
-
+require("./routes/api-routes.js")(app);
 
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({force: true}).then(function() {
+db.sequelize.sync({force: false}).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
-
-        // db.profile.create({
-        // 	name: "Blake",
-        // 	img_url: "Google.com",
-        // 	title: "fullstack developer",
-        // 	about: "Hello my name is blake I am an aspiring developer",
-        // 	linkedin_url: "linkedin.com",
-        // 	github_url: "github.com",
-        // 	personal_url: "blake.com"
-        // }).then(function(profile) {
-        // 	db.backend_skills.create({
-        // 		mysql : true,
-        // 		profileId: profile.id
-        // 	});
-
-        // 	db.frontend_skill.create({
-        // 		javascript: true,
-        // 		profileId: profile.id
-        // 	});
-
-        // 	db.design_skills.create({
-        // 		photoshop: true,
-        // 		profileId: profile.id
-        // 	});
-
-        // })
     });
 });
