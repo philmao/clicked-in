@@ -93,9 +93,18 @@ app.use(bodyParser.json({
 app.use(methodOverride("_method"));
 
 // Set Handlebars.
-app.engine("handlebars", exphbs({
-    defaultLayout: "main"
-}));
+let hbs = exphbs.create({
+  defaultLayout:'main',
+  helpers: {
+    equals: function(string1,string2){
+        var boolean = (string1==string2)
+        return boolean;
+    }
+  }
+})
+
+
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 // Serve static content for the app from the "public" directory in the application directory.

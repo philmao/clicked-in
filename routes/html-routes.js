@@ -19,7 +19,8 @@ module.exports = function(app) {
         }
         
         db.profile.findAll({}).then(function(profiles){
-            res.render('index', { profiles, user: req.user, linkedinUser, title: 'All Profiles', authentication: req.isAuthenticated() });
+            var endorsed_ppl = "phil,david,blake".split(",");
+            res.render('index', { profiles, user: req.user, linkedinUser, title: 'All Profiles', authentication: req.isAuthenticated(),endorsed_ppl });
         });
         
     });
@@ -68,10 +69,10 @@ module.exports = function(app) {
         console.log(req.body.username);
         console.log(req.body.password);
         db.profile.create({
-            name: "David",
+            name: "Blake",
             img_url: "Google.com",
             title: "fullstack developer",
-            about: "Hello my name is david I am an aspiring developer",
+            about: "Hello my name is blake I am an aspiring developer",
             linkedin_url: "linkedin.com",
             github_url: "github.com",
             personal_url: "blake.com",
@@ -155,11 +156,13 @@ module.exports = function(app) {
                         endorsed_people+=req.body.username+","
                         profile.updateAttributes({
                             endorsed_people :  endorsed_people
+                        }).then(function(){
+                            res.redirect("/");
                         })
                     })
                 }
             }) 
-            res.redirect("/")
+            
         } else {
             res.redirect("/login")
         }
