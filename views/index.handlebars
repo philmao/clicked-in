@@ -9,9 +9,17 @@
         <div class="container">
             <div class="row">
                 {{#each profiles}}
+                    {{#if (partOf this.username @root.user.endorsed_people)}}
+                    <a href="/viewprofile/{{this.id}}">
+                        {{> profile-parts/profile2}}
+                    </a>
+                    {{/if}}
+
+                    {{#unless (partOf this.username @root.user.endorsed_people)}}
                     <a href="/viewprofile/{{this.id}}">
                         {{> profile-parts/profile}}
                     </a>
+                    {{/unless}}
                 {{/each}}
             </div>
         </div>

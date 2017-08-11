@@ -5,9 +5,7 @@ var bcrypt = require('bcrypt-nodejs');
 
 module.exports = function(app) {
     // root route - runs Sequelize findAll() to show all profiles
-    app.get('/', function(req, res) {
-        console.log(req.user);
-
+    
     function checkForLinkedInUser(req) {
         var linkedinUser;
         
@@ -19,31 +17,60 @@ module.exports = function(app) {
             }
         }
         
-        db.profile.findAll({}).then(function(profiles){
-            var endorsed_ppl = "phil,david,blake".split(",");
-            res.render('index', { profiles, user: req.user, linkedinUser, title: 'All Profiles', authentication: req.isAuthenticated(),endorsed_ppl });
-
-        return linkedinUser;
     }
-
+    
+    
+    
+    
     // root route - runs Sequelize findAll() to show all profiles
     app.get('/', function(req, res) {
         // console.log(req.user);
-
-        var linkedinUser = checkForLinkedInUser(req);
-
-        db.profile.findAll({}).then(function(profiles){
-            res.render('index', {
-                profiles,
-                user: req.user,
-                linkedinUser,
-                title: 'All Profiles',
-                authentication: req.isAuthenticated()
-            });
-        });
         
-    });
+        var linkedinUser = checkForLinkedInUser(req);
+        
+        //if logged in locally
+        var endorsed_ppl = "bhhuynh,david".split(",");
+        console.log("here is the user",req.user);
 
+        //Check if user is logged in
+        if(req.isAuthenticated()){
+            db.profile.findOne({
+                where:{
+                    $or: [
+                        {
+                            'username': req.user.username
+                        },
+                        {
+                            'linkedin_id': req.user.id
+                        }
+                    ]
+                }
+            }).then(function(logged_user){
+                db.profile.findAll({}).then(function(profiles){
+                    res.render('index', {
+                        profiles,
+                        user: logged_user,
+                        linkedinUser,
+                        title: 'All Profiles',
+                        authentication: req.isAuthenticated(),
+                        endorsed_ppl
+                    });
+                });
+            });
+        } else {
+            db.profile.findAll({}).then(function(profiles){
+                res.render('index', {
+                    profiles,
+                    user: req.user,
+                    linkedinUser,
+                    title: 'All Profiles',
+                    authentication: req.isAuthenticated(),
+                    endorsed_ppl
+                });
+            });
+        }
+    });
+    
     app.get('/viewprofile/:profileId?', function(req, res) {
         db.profile.findOne({
             'where': {
@@ -64,7 +91,7 @@ module.exports = function(app) {
                     }
                 }).then(frontEndSkillSet => {
                     var trueSkills = require('../services/getSkillNames')(frontEndSkillSet, backEndSkillSet);
-
+                    
                     db.project.findAll({
                         'where': {
                             'profileId': profile.id
@@ -78,16 +105,16 @@ module.exports = function(app) {
                             'backSkills': trueSkills.trueBackSkills,
                         });
                     });
-
+                    
                 });// <-- frontend.findAll
             });// <-- backend.findAll
         });// <-- profile.findOne
     });
-
+    
     // linkedin-signup - renders sign-up page to register a new profile
     app.get('/linkedin-signup', function(req, res) {
         var linkedinUser = checkForLinkedInUser(req);
-
+        
         res.render('sign-up', {
             user: req.user,
             linkedinUser,
@@ -99,7 +126,7 @@ module.exports = function(app) {
     
     // signup-submit - posts a new profile to db
     app.post('/signup-submit', function(req, res) {
-
+        
         db.profile.create({
             'username': req.body.username,
             'name': req.body.name,
@@ -109,27 +136,28 @@ module.exports = function(app) {
             'linkedin_url': req.body.linkedin_url,
             'github_url': req.body.github_url,
             'personal_url': req.body.personal_url,
-            'linkedin_id': req.user.id
+            'linkedin_id': req.user.id,
+            'endorsed_people': "seed,"
         }).then(profile => {
-
+            
             // use helper function to separate frontend & backend skills from req.body
             var separateFields = require('../services/separateFields')(req.body, profile.dataValues.id);
-
+            
             // create new skills rows in corresponding tables
             db.frontend_skill.create(separateFields.frontEnd);
             db.backend_skill.create(separateFields.backEnd);
-
+            
             // create new project(s)
             console.log(' ---- projects ----')
             console.log(separateFields.projects);
-
+            
             separateFields.projects.forEach(project => {
                 db.project.create(project);
             });
         }).then(() => {
             res.redirect('/');
         });
-
+        
     });
     
     
@@ -144,7 +172,7 @@ module.exports = function(app) {
             res.sendFile(path.join(__dirname+'/login.html'));
         }
     })
-
+    
     //Send back data through /myprofile url after User is logged in
     app.get('/myprofile', function(req,res){
         if(req.isAuthenticated()){
@@ -171,25 +199,9 @@ module.exports = function(app) {
             github_url: "github.com",
             personal_url: "blake.com",
             username: req.body.username,
-            password: req.body.password
+            password: req.body.password,
+            endorsed_people: "seed,"
         }).then(function(profile) {
-            console.log(profile.id);
-            console.log(profile.dataValues.id);
-            
-            db.backend_skills.create({
-                mysql : true,
-                profileId: profile.id
-            });
-            
-            db.frontend_skill.create({
-                javascript: true,
-                profileId: profile.id
-            });
-            
-            db.design_skills.create({
-                photoshop: true,
-                profileId: profile.id
-            });
             
             res.redirect('./');
             
@@ -207,7 +219,14 @@ module.exports = function(app) {
             
             db.profile.findOne({
                 where:{
-                    username : req.user.username
+                    $or: [
+                        {
+                            'username': req.user.username
+                        },
+                        {
+                            'linkedin_id': req.user.id
+                        }
+                    ]
                 }
             }).then(function(endorser){
                 var endorsed = false;
@@ -243,7 +262,14 @@ module.exports = function(app) {
                     //Add to list of endorsed people by logged in user
                     db.profile.findOne({
                         where:{
-                            username: req.user.username
+                            $or: [
+                                {
+                                    'username': req.user.username
+                                },
+                                {
+                                    'linkedin_id': req.user.id
+                                }
+                            ]
                         }
                     }).then(function(profile){
                         var endorsed_people = profile.endorsed_people;
@@ -254,10 +280,14 @@ module.exports = function(app) {
                             res.redirect("/");
                         })
                     })
+                } else {
+                    res.redirect("/");
                 }
+                
             }) 
             
         } else {
+            req.flash("info","Flash")
             res.redirect("/login")
         }
     })
