@@ -93,9 +93,18 @@ app.use(bodyParser.json({
 app.use(methodOverride("_method"));
 
 // Set Handlebars.
-app.engine("handlebars", exphbs({
-    defaultLayout: "main"
-}));
+let hbs = exphbs.create({
+  defaultLayout:'main',
+  helpers: {
+    equals: function(string1,string2){
+        var boolean = (string1==string2)
+        return boolean;
+    }
+  }
+})
+
+
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 // Serve static content for the app from the "public" directory in the application directory.
@@ -119,41 +128,11 @@ require("./routes/auth-routes.js")(app);
 // require("./routes/author-api-routes.js")(app);
 // require("./routes/post-api-routes.js")(app);
 
-
-
-
-
-
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
+
 db.sequelize.sync({force: true}).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
-
-        // db.profile.create({
-        // 	name: "Blake",
-        // 	img_url: "Google.com",
-        // 	title: "fullstack developer",
-        // 	about: "Hello my name is blake I am an aspiring developer",
-        // 	linkedin_url: "linkedin.com",
-        // 	github_url: "github.com",
-        // 	personal_url: "blake.com"
-        // }).then(function(profile) {
-        // 	db.backend_skills.create({
-        // 		mysql : true,
-        // 		profileId: profile.id
-        // 	});
-
-        // 	db.frontend_skill.create({
-        // 		javascript: true,
-        // 		profileId: profile.id
-        // 	});
-
-        // 	db.design_skills.create({
-        // 		photoshop: true,
-        // 		profileId: profile.id
-        // 	});
-
-        // })
     });
 });
