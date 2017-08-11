@@ -38,7 +38,23 @@ module.exports = function(sequelize, DataTypes) {
   // profile.associate = function(models) {
   //   // Associating Profile with skills
   //   // When an Profile is deleted, also delete any associated skills
-  //   profile.hasMany(models.project, {
+  //   profile.hasMany(models.Project, {
+  //     onDelete: "cascade"
+  //   });
+  // };
+
+  // profile.associate = function(models) {
+  //   // Associating Profile with skills
+  //   // When an Profile is deleted, also delete any associated skills
+  //   profile.hasMany(models.Frontend_skill, {
+  //     onDelete: "cascade"
+  //   });
+  // };
+
+  // profile.associate = function(models) {
+  //   // Associating Profile with skills
+  //   // When an Profile is deleted, also delete any associated skills
+  //   profile.hasMany(models.Backend_skills, {
   //     onDelete: "cascade"
   //   });
   // };
@@ -46,23 +62,7 @@ module.exports = function(sequelize, DataTypes) {
   profile.associate = function(models) {
     // Associating Profile with skills
     // When an Profile is deleted, also delete any associated skills
-    profile.hasMany(models.frontend_skill, {
-      onDelete: "cascade"
-    });
-  };
-
-  profile.associate = function(models) {
-    // Associating Profile with skills
-    // When an Profile is deleted, also delete any associated skills
-    profile.hasMany(models.backend_skills, {
-      onDelete: "cascade"
-    });
-  };
-
-  profile.associate = function(models) {
-    // Associating Profile with skills
-    // When an Profile is deleted, also delete any associated skills
-    profile.hasMany(models.design_skills, {
+    profile.hasMany(models.Skill, {
       onDelete: "cascade"
     });
   };
