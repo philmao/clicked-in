@@ -93,9 +93,18 @@ app.use(bodyParser.json({
 app.use(methodOverride("_method"));
 
 // Set Handlebars.
-app.engine("handlebars", exphbs({
-    defaultLayout: "main"
-}));
+let hbs = exphbs.create({
+  defaultLayout:'main',
+  helpers: {
+    equals: function(string1,string2){
+        var boolean = (string1==string2)
+        return boolean;
+    }
+  }
+})
+
+
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 // Serve static content for the app from the "public" directory in the application directory.
@@ -122,6 +131,13 @@ require("./routes/api-routes.js")(app);
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({force: false}).then(function() {
+// require("./routes/author-api-routes.js")(app);
+// require("./routes/post-api-routes.js")(app);
+
+// Syncing our sequelize models and then starting our Express app
+// =============================================================
+
+db.sequelize.sync({force: true}).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });
