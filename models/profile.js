@@ -43,27 +43,27 @@ module.exports = function(sequelize, DataTypes) {
   // };
 
   profile.associate = function(models) {
-    // Associating Author with Posts
-    // When an Author is deleted, also delete any associated Posts
     profile.hasMany(models.frontend_skill, {
       onDelete: "cascade"
     });
   };
 
   profile.associate = function(models) {
-    // Associating Author with Posts
-    // When an Author is deleted, also delete any associated Posts
-    profile.hasMany(models.backend_skills, {
+    profile.hasMany(models.backend_skill, {
       onDelete: "cascade"
     });
   };
 
   profile.associate = function(models) {
-    // Associating Author with Posts
-    // When an Author is deleted, also delete any associated Posts
     profile.hasMany(models.design_skills, {
       onDelete: "cascade"
     });
+  };
+
+  profile.associate = function(models) {
+      profile.hasMany(models.project, {
+          onDelete: "cascade"
+      });
   };
 
   return profile;

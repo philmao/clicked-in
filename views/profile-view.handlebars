@@ -1,0 +1,70 @@
+<div class="main main-raised">
+    <div class="section profile-view">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <img src="{{profile.img_url}}" alt="" class="img-circle img-raised view-profile-img">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    {{> profile-view-parts/name-title}}
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-4 col-xs-6">
+                    <h4>Front-End Skills:</h4>
+                    <ul class="list">
+                        {{#each frontSkills}}
+                            <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div class="col-sm-2 col-xs-6 is-flexed-right">
+                    <span>
+                        <h4>Back-End Skills:</h4>
+                        <ul class="list">
+                            {{#each backSkills}}
+                                <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </span>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>About {{profile.name}}:</h4>
+                    <p>
+                        {{profile.about}}
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>Links:</h4>
+                    <ul class="list">
+                        <li><a href="{{profile.linkedin_url}}">{{profile.linkedin_url}}</a></li>
+                        <li><a href="{{profile.github_url}}">{{profile.github_url}}</a></li>
+                        <li><a href="{{profile.personal_url}}">{{profile.personal_url}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>Projects:</h4>
+                    {{#each projects}}
+                        <div class="col-md-4">
+                            <h5 class="text-center">{{this.name}}</h5>
+                            <img src="{{this.img_url}}" alt="" class="img-responsive img-raised project-img">
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
