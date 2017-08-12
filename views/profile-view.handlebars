@@ -16,9 +16,9 @@
             <div class="row">
                 <div class="col-sm-2 col-sm-offset-3 col-xs-4">
                     <h4>Front-End Skills</h4>
-                        {{#listFront skills}}
-                            {{this}}
-                        {{/listFront}}
+                    {{#listFront skills}}
+                        {{this}}
+                    {{/listFront}}
                     </ul>
                 </div>
                 <div class="col-sm-2 col-xs-4 is-flexed-right">
@@ -64,9 +64,27 @@
                     <h4>Projects:</h4>
                     {{#each projects}}
                         <div class="col-md-4">
-                            <h5 class="text-center">{{this.name}}</h5>
-                            <img src="{{this.img_url}}" alt="" class="img-responsive img-raised project-img">
+                            <a href="#" class="project-link" data-toggle="modal" data-target="#{{this.id}}">
+                                <h5 class="text-center">{{this.name}}</h5>
+                                <img src="{{this.img_url}}" alt="" class="img-responsive img-raised project-img">
+                            </a>
                         </div>
+
+                        <div id="{{this.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">{{this.name}}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{this.description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     {{/each}}
                 </div>
             </div>
