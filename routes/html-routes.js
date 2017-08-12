@@ -5,24 +5,11 @@ var bcrypt = require('bcrypt-nodejs');
 
 module.exports = function(app) {
 
-    function checkForLinkedInUser(req) {
-        var linkedinUser;
-
-        if (req.isAuthenticated()) {
-            if (req.user.provider === 'linkedin') {
-                linkedinUser = true;
-            } else {
-                linkedinUser = false;
-            }
-        }
-      
-        return linkedinUser;
-    };
 
     // root route - runs Sequelize findAll() to show all profiles
     app.get('/', function(req, res) {
-        
-        var linkedinUser = checkForLinkedInUser(req);
+
+        var linkedinUser = require('../services/checkForLinkedInUser')(req);
 
         if (req.isAuthenticated()) {
             db.profile.findOne({
@@ -64,8 +51,11 @@ module.exports = function(app) {
             });
         }
     });
-    
+
     app.get('/viewprofile/:profileId?', function(req, res) {
+
+        var linkedinUser = require('../services/checkForLinkedInUser')(req);
+
         db.profile.findOne({
             'where': {
                 'id': req.params.profileId
@@ -86,6 +76,7 @@ module.exports = function(app) {
                     }).then(projects => {
                         res.render('profile-view', {
                             user: req.user,
+                            linkedinUser,
                             profile,
                             skills,
                             projects,
@@ -102,7 +93,7 @@ module.exports = function(app) {
 
         //If logged in
         if (req.isAuthenticated()) {
-            var linkedinUser = checkForLinkedInUser(req);
+            var linkedinUser = require('../services/checkForLinkedInUser')(req);
 
             db.profile.findOne({
                 where: {
@@ -132,6 +123,7 @@ module.exports = function(app) {
                         }).then(projects => {
                             res.render('profile-view', {
                                 user: req.user,
+                                linkedinUser,
                                 profile,
                                 skills,
                                 projects,
@@ -144,11 +136,11 @@ module.exports = function(app) {
             }); // <-- profile.findOne
         }
     });
-    
+
     // linkedin-signup - renders sign-up page to register a new profile
     app.get('/linkedin-signup', function(req, res) {
-        var linkedinUser = checkForLinkedInUser(req);
-        
+        var linkedinUser = require('../services/checkForLinkedInUser')(req);
+
         res.render('sign-up', {
             user: req.user,
             linkedinUser,
@@ -160,7 +152,7 @@ module.exports = function(app) {
 
     // signup-submit - posts a new profile to db
     app.post('/signup-submit', function(req, res) {
-        
+
         db.profile.create({
             'username': req.body.username,
             'name': req.body.name,
@@ -175,7 +167,7 @@ module.exports = function(app) {
 
             // use helper function to separate skills & projects from req.body
             var separateFields = require('../services/separateFields')(req.body, profile.dataValues.id);
-            
+
             // create new skills rows in corresponding tables
             db.Skill.create(separateFields.skills);
             // db.backend_skill.create(separateFields.backEnd);
@@ -246,7 +238,7 @@ module.exports = function(app) {
 
         //If logged in
         if (req.isAuthenticated()) {
-            var linkedinUser = checkForLinkedInUser(req);
+            var linkedinUser = require('../services/checkForLinkedInUser')(req);
 
             db.profile.findOne({
                 where: {
