@@ -5,6 +5,12 @@
 
 ClickedIn provides a platform for developers to discover other developers and gain inspiration from other developers.
 
+## Screenshots:
+
+![Screenshot1](./public/assets/img/rootscreenshot.png)
+
+![Screenshot1](./public/assets/img/profilescreenshot.png)
+
 ## Team Members:
 
 ### Leeland Miller
@@ -17,7 +23,7 @@ ClickedIn provides a platform for developers to discover other developers and ga
 * Application Route controller setup 
 * Testing/Debugging
 
---
+---
 
 ### Blake Huynh
 
@@ -27,7 +33,7 @@ ClickedIn provides a platform for developers to discover other developers and ga
 * User endorsement/upvoting
 * Testing/Debugging
 
---
+---
 
 ### Philip Mao
 
@@ -36,7 +42,7 @@ ClickedIn provides a platform for developers to discover other developers and ga
 * JawsDB/Heroku setup for deployment
 * Testing/Debugging
 
---
+---
 
 ### David Soto
 

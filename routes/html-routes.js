@@ -211,7 +211,8 @@ module.exports = function(app) {
 
         res.render('local-sign-up', {
             linkedinUser,
-            'user': req.user
+            'user': req.user,
+            'title': 'Register Your Profile',
         });
     });
 
