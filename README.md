@@ -5,6 +5,12 @@
 
 ClickedIn provides a platform for developers to discover other developers and gain inspiration from other developers.
 
+## Screenshots:
+
+![Screenshot1](./public/assets/img/rootscreenshot.png)
+
+![Screenshot1](./public/assets/img/profilescreenshot.png)
+
 ## Team Members:
 
 ### Leeland Miller
