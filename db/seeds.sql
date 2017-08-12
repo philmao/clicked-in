@@ -8,14 +8,14 @@ VALUES ('Janice West',
 'http://janicewest.com/', 0, "", 1,
 'janicewest', 'janicewest'
 );
-INSERT INTO skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
+INSERT INTO Skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
 	back_mysql, back_node, back_php, back_express, back_mongodb, back_java, back_python, back_c_sharp, 
 	design_photoshop, design_gimp, design_illustrator, design_inkscape, design_coreldraw, design_adobe_indesign, profileId)
 VALUES (true, true, true, false, true, true, false, false,
 	true, true, false, true, false, true, true, false, 
 	false, false, false, false, false, false, 1);
 
-INSERT INTO projects (name, img_url, description, profileId)
+INSERT INTO Projects (name, img_url, description, profileId)
 VALUES ('Mobile phone app', '', 'IOS mobile phone app', 1);
 
 INSERT INTO profiles (name, img_url, title, about, linkedin_url, github_url, personal_url, endorsements, endorsed_people, linkedin_id, username, password)
@@ -29,14 +29,14 @@ VALUES ('Jackson Hughes',
 'jacksonhughes', 'jacksonhughes'
 );
 
-INSERT INTO skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
+INSERT INTO Skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
 	back_mysql, back_node, back_php, back_express, back_mongodb, back_java, back_python, back_c_sharp, 
 	design_photoshop, design_gimp, design_illustrator, design_inkscape, design_coreldraw, design_adobe_indesign, profileId)
 VALUES (true, true, true, false, true, true, false, false, 
 	false, false, false, false, false, false, 
 	true, true, true, true, true, true, true, true, 2);
 
-INSERT INTO projects (name, img_url, description, profileId)
+INSERT INTO Projects (name, img_url, description, profileId)
 VALUES ('Bamazon', '', 'Bamazon web site', 2);
 
 INSERT INTO profiles (name, img_url, title, about, linkedin_url, github_url, personal_url, endorsements, endorsed_people, linkedin_id, username, password)
@@ -50,14 +50,14 @@ VALUES ('Theodore Wright',
 'theodorewright', 'theodorewright'
 );
 
-INSERT INTO skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
+INSERT INTO Skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
 	back_mysql, back_node, back_php, back_express, back_mongodb, back_java, back_python, back_c_sharp, 
 	design_photoshop, design_gimp, design_illustrator, design_inkscape, design_coreldraw, design_adobe_indesign, profileId)
 VALUES (false, false, true, false, false, false, false, false, 
 	false, false, false, false, false, false, 
 	true, true, true, true, true, true, true, true, 3);
 
-INSERT INTO projects (name, img_url, description, profileId)
+INSERT INTO Projects (name, img_url, description, profileId)
 VALUES ('Email server', '', 'Mail.com email server', 3);
 
 INSERT INTO profiles (name, img_url, title, about, linkedin_url, github_url, personal_url, endorsements, endorsed_people, linkedin_id, username, password)
@@ -71,14 +71,14 @@ VALUES ('Melody Nguyen',
 'melodynguyen', 'melodynguyen'
 );
 
-INSERT INTO skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
+INSERT INTO Skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
 	back_mysql, back_node, back_php, back_express, back_mongodb, back_java, back_python, back_c_sharp, 
 	design_photoshop, design_gimp, design_illustrator, design_inkscape, design_coreldraw, design_adobe_indesign, profileId)
 VALUES (true, true, true, true, true, true, true, true,
 	false, false, false, false, false, false, false, false,
 	false, false, false, false, false, false, 4);
 
-INSERT INTO projects (name, img_url, description, profileId)
+INSERT INTO Projects (name, img_url, description, profileId)
 VALUES ('Hearts', '', 'Hearts card game web site', 4);
 
 INSERT INTO profiles (name, img_url, title, about, linkedin_url, github_url, personal_url, endorsements, endorsed_people, linkedin_id, username, password)
@@ -92,14 +92,14 @@ VALUES ('Laura Christensen',
 'laurachristensen','laurachristensen'
 );
 
-INSERT INTO skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
+INSERT INTO Skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
 	back_mysql, back_node, back_php, back_express, back_mongodb, back_java, back_python, back_c_sharp, 
 	design_photoshop, design_gimp, design_illustrator, design_inkscape, design_coreldraw, design_adobe_indesign, profileId)
 VALUES (true, true, true, true, true, true, true, true,
 	false, false, false, false, false, false, false, false,
 	false, false, false, false, false, false, 5);
 
-INSERT INTO projects (name, img_url, description, profileId)
+INSERT INTO Projects (name, img_url, description, profileId)
 VALUES ('Company web site', '', 'Hi-Tech web site', 5);
 
 
@@ -113,14 +113,14 @@ VALUES ('Shawn Fuller',
 'http://shawnfuller.com/', 0, "", 6,
 'shawnfuller', 'shawnfuller'
 );
-INSERT INTO skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
+INSERT INTO Skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
 	back_mysql, back_node, back_php, back_express, back_mongodb, back_java, back_python, back_c_sharp, 
 	design_photoshop, design_gimp, design_illustrator, design_inkscape, design_coreldraw, design_adobe_indesign, profileId)
 VALUES (true, true, true, false, true, true, false, false,
 	true, true, false, true, false, true, true, false, 
 	false, false, false, false, false, false, 6);
 
-INSERT INTO projects (name, img_url, description, profileId)
+INSERT INTO Projects (name, img_url, description, profileId)
 VALUES ('Mobile phone app', '', 'IOS mobile phone app', 6);
 
 INSERT INTO profiles (name, img_url, title, about, linkedin_url, github_url, personal_url, endorsements, endorsed_people, linkedin_id, username, password)
@@ -134,14 +134,14 @@ VALUES ('Paige Olsen',
 'paigeolsen', 'paigeolsen'
 );
 
-INSERT INTO skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
+INSERT INTO Skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
 	back_mysql, back_node, back_php, back_express, back_mongodb, back_java, back_python, back_c_sharp, 
 	design_photoshop, design_gimp, design_illustrator, design_inkscape, design_coreldraw, design_adobe_indesign, profileId)
 VALUES (true, true, true, false, true, true, false, false, 
 	false, false, false, false, false, false, 
 	true, true, true, true, true, true, true, true, 7);
 
-INSERT INTO projects (name, img_url, description, profileId)
+INSERT INTO Projects (name, img_url, description, profileId)
 VALUES ('Bamazon', '', 'Bamazon web site', 7);
 
 INSERT INTO profiles (name, img_url, title, about, linkedin_url, github_url, personal_url, endorsements, endorsed_people, linkedin_id, username, password)
@@ -155,14 +155,14 @@ VALUES ('Anton Gerlach',
 'antongerlach', 'antongerlach'
 );
 
-INSERT INTO skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
+INSERT INTO Skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
 	back_mysql, back_node, back_php, back_express, back_mongodb, back_java, back_python, back_c_sharp, 
 	design_photoshop, design_gimp, design_illustrator, design_inkscape, design_coreldraw, design_adobe_indesign, profileId)
 VALUES (false, false, true, false, false, false, false, false, 
 	false, false, false, false, false, false, 
 	true, true, true, true, true, true, true, true, 8);
 
-INSERT INTO projects (name, img_url, description, profileId)
+INSERT INTO Projects (name, img_url, description, profileId)
 VALUES ('Email server', '', 'Mail.com email server', 8);
 
 INSERT INTO profiles (name, img_url, title, about, linkedin_url, github_url, personal_url, endorsements, endorsed_people, linkedin_id, username, password)
@@ -176,14 +176,14 @@ VALUES ('Noah Vargas',
 'noahvargas', 'noahvargas'
 );
 
-INSERT INTO skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
+INSERT INTO Skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
 	back_mysql, back_node, back_php, back_express, back_mongodb, back_java, back_python, back_c_sharp, 
 	design_photoshop, design_gimp, design_illustrator, design_inkscape, design_coreldraw, design_adobe_indesign, profileId)
 VALUES (true, true, true, true, true, true, true, true,
 	false, false, false, false, false, false, false, false,
 	false, false, false, false, false, false, 9);
 
-INSERT INTO projects (name, img_url, description, profileId)
+INSERT INTO Projects (name, img_url, description, profileId)
 VALUES ('Hearts', '', 'Hearts card game web site', 9);
 
 INSERT INTO profiles (name, img_url, title, about, linkedin_url, github_url, personal_url, endorsements, endorsed_people, linkedin_id, username, password)
@@ -197,12 +197,12 @@ VALUES ('Ludovicus Klijn',
 'ludovicusklijn','ludovicusklijn'
 );
 
-INSERT INTO skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
+INSERT INTO Skills (front_html, front_css, front_javascript, front_ajax, front_jquery, front_bootstrap, front_react, front_angular, 
 	back_mysql, back_node, back_php, back_express, back_mongodb, back_java, back_python, back_c_sharp, 
 	design_photoshop, design_gimp, design_illustrator, design_inkscape, design_coreldraw, design_adobe_indesign, profileId)
 VALUES (true, true, true, true, true, true, true, true,
 	false, false, false, false, false, false, false, false,
 	false, false, false, false, false, false, 10);
 
-INSERT INTO projects (name, img_url, description, profileId)
+INSERT INTO Projects (name, img_url, description, profileId)
 VALUES ('Company web site', '', 'Hi-Tech web site', 10);
