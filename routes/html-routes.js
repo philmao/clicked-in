@@ -15,13 +15,13 @@ module.exports = function(app) {
                 linkedinUser = false;
             }
         }
-
+      
         return linkedinUser;
     };
 
     // root route - runs Sequelize findAll() to show all profiles
     app.get('/', function(req, res) {
-        // console.log(req.user);
+        
         var linkedinUser = checkForLinkedInUser(req);
 
         if (req.isAuthenticated()) {
@@ -49,7 +49,7 @@ module.exports = function(app) {
                         authentication: req.isAuthenticated(),
                     });
                 });
-            })
+            });
         } else {
             db.profile.findAll({
                 'order': [['endorsements', 'DESC']]
@@ -64,7 +64,7 @@ module.exports = function(app) {
             });
         }
     });
-
+    
     app.get('/viewprofile/:profileId?', function(req, res) {
         db.profile.findOne({
             'where': {
@@ -144,11 +144,11 @@ module.exports = function(app) {
             }); // <-- profile.findOne
         }
     });
-
+    
     // linkedin-signup - renders sign-up page to register a new profile
     app.get('/linkedin-signup', function(req, res) {
         var linkedinUser = checkForLinkedInUser(req);
-
+        
         res.render('sign-up', {
             user: req.user,
             linkedinUser,
@@ -160,7 +160,7 @@ module.exports = function(app) {
 
     // signup-submit - posts a new profile to db
     app.post('/signup-submit', function(req, res) {
-
+        
         db.profile.create({
             'username': req.body.username,
             'name': req.body.name,
@@ -170,12 +170,12 @@ module.exports = function(app) {
             'linkedin_url': req.body.linkedin_url,
             'github_url': req.body.github_url,
             'personal_url': req.body.personal_url,
-            'linkedin_id': req.user.id
+            'linkedin_id': req.user.id,
         }).then(profile => {
 
             // use helper function to separate skills & projects from req.body
             var separateFields = require('../services/separateFields')(req.body, profile.dataValues.id);
-
+            
             // create new skills rows in corresponding tables
             db.Skill.create(separateFields.skills);
             // db.backend_skill.create(separateFields.backEnd);
@@ -324,8 +324,8 @@ module.exports = function(app) {
                 }
             });
         } else {
+            req.flash("info","Flash")
             res.redirect("/login")
         }
     })
-
 };
