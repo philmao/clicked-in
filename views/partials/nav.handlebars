@@ -12,19 +12,19 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Home<span class="sr-only">(current)</span></a></li>
+                <li><a href="/">Home<span class="sr-only">(current)</span></a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    {{> navbar-filter}}
+                    <a href="#" class="dropdown-toggle search-button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         Search  <i class="fa fa-search" aria-hidden="true"></i></span>
                     </a>
-                    {{> navbar-filter}}
                 </li>
-                <li>
-                    {{#unless authentication}}
-                        <a href="/auth/linkedin">Sign In (LinkedIN)</a>
-                    {{/unless}}
-                    {{#if authentication}}
-                        <a href="#" data-toggle="acc-tooltip" data-placement="bottom" title="View Account">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        {{#unless authentication}}
+                            Sign In/Sign Up <span class="caret"></span>
+                        {{/unless}}
+                        {{#if authentication}}
                             {{#if linkedinUser}}
                                 {{user.displayName}}
                             {{/if}}
@@ -32,10 +32,94 @@
                             {{#unless linkedinUser}}
                                 {{user.name}}
                             {{/unless}}
-                        </a>
-                    {{/if}}
+                        {{/if}}
+                    </a>
+                    <ul class="dropdown-menu sign-in-menu">
+                        <li>
+                            {{#unless authentication}}
+                                <a href="/login" class="dropdown-link">Sign In</a>
+                                <a href="/signup" class="dropdown-link">Sign Up</a>
+                            {{/unless}}
+                            {{#if authentication}}
+                                <a href="/viewmyprofile" class="dropdown-link">View My Profile</a>
+                            {{/if}}
+                        </li>
+                        <li>
+                            {{#unless authentication}}
+                                <a href="/auth/linkedin" class="linkedin-link">
+                                    <img src="../../public/assets/img/Sign-In-Small---Default.png" class="linkedin-sign-in-btn" alt="LinkedIn Sign In Button">
+                                </a>
+                            {{/unless}}
+                            {{#if authentication}}
+                                <a href="/linkedin/signout" class="dropdown-link">Sign Out</a>
+                            {{/if}}
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+<script>
+    var displayContent = function () {
+
+        var frontendArray = ["html", "css", "javascript", "ajax", "jquery", "bootstrap", "react", "angular"];
+        var backendArray = ["mysql", "node", "php", "express", "mongodb", "java", "python", "c_sharp"];
+        var designArray = ["photoshop", "gimp", "illustrator", "inkscape", "coreldraw", "adobe_indesign"];
+
+        var j = 0;
+
+        var frontSkills = "<h3 class='filter-heading'>Frontend Skills</h3>";
+        frontSkills += "<ul class='filter-list'>";
+        for(var i=0; i < frontendArray.length; i++) {
+            frontSkills += "<li><div class='checkbox'><label>";
+            frontSkills += "<input type='checkbox' name='front_" + frontendArray[i] + "'>";
+            frontSkills += "<span class='checkbox-material'><span class='check'></span></span>";
+            frontSkills += frontendArray[i];
+            frontSkills += "</label></div></li>";
+            j++;
+        };
+        frontSkills += "</ul>";
+        $("#frontend_skills").html(frontSkills);
+
+        var backSkills = "<h3 class='filter-heading'>Backend Skills</h3>";
+        backSkills += "<ul class='filter-list'>";
+        for(var i=0; i < backendArray.length; i++) {
+            backSkills += "<li><div class='checkbox'><label>";
+            backSkills += "<input type='checkbox' name='back_" + backendArray[i] + "'>";
+            backSkills += "<span class='checkbox-material'><span class='check'></span></span>";
+            backSkills += backendArray[i];
+            backSkills += "</label></div></li>";
+            j++;
+        };
+        backSkills += "</ul>";
+        $("#backend_skills").html(backSkills);
+
+        var designSkills = "<h3 class='filter-heading'>Design Skills</h3>";
+        designSkills += "<ul class='filter-list'>";
+        for(var i=0; i < designArray.length; i++) {
+            designSkills += "<li><div class='checkbox'><label>";
+            designSkills += "<input type='checkbox' name='design_" + designArray[i] + "'>";
+            designSkills += "<span class='checkbox-material'><span class='check'></span></span>";
+            designSkills += designArray[i];
+            designSkills += "</label></div></li>";
+            j++;
+        };
+        designSkills += "</ul>";
+        $("#design_skills").html(designSkills);
+
+    };
+
+    $(".search-button").on('click', function () {
+
+        displayContent();
+
+    });
+
+    $('body').on('hover', '.linkedin-sign-in-btn', function() {
+        $('.linkedin-sign-in-btn').attr('src', '../../public/assets/img/Sign-In-Small---Hover.png');
+    }, function() {
+        $('.linkedin-sign-in-btn').attr('src', '../../public/assets/img/Sign-In-Small---Default.png')
+    });
+
+</script>

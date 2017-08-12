@@ -15,28 +15,22 @@ module.exports = app => {
         }),
         function(req, res) {
             // Successful authentication, redirect home.
-            db.profile.findOrCreate({
+            db.profile.findOne({
                 'where': {
                     'linkedin_id': req.user.id
-                },
-                'defaults': {
-                    'name': req.user.displayName,
-                    'img_url': req.user._json.pictureUrls.values[0],
-                    'title': req.user._json.headline,
-                    'about': req.user._json.summary,
-                    'linkedin_url': req.user._json.publicProfileUrl,
-                    'github_url': 'www.github.com',
-                    'personal_url': 'www.profile.com',
-                    'linkedin_id': req.user.id
+                }
+            }).then(function(user) {
+                if (user) {
+                    res.redirect('/');
+                } else {
+                    res.redirect('/linkedin-signup');
                 }
             });
-            console.log(req);
-            res.redirect('/');
         }
     );
 
     app.post('/login',passport.authenticate('local-login',{
-        successRedirect: "/myprofile",
+        successRedirect: "/",
         failureRedirect:"/login",
         failureFlash: "wrong"
     }));

@@ -12,6 +12,7 @@ var passport = require("passport");
 var path = require("path");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+var Handlebars = require("handlebars");
 var methodOverride = require('method-override');
 var passport = require('passport');
 var session = require("express-session");
@@ -93,9 +94,91 @@ app.use(bodyParser.json({
 app.use(methodOverride("_method"));
 
 // Set Handlebars.
-app.engine("handlebars", exphbs({
-    defaultLayout: "main"
-}));
+let hbs = exphbs.create({
+    defaultLayout: 'main',
+    helpers: {
+        listFront: function(skills, options) {
+            var trueFrontSkills = [];
+
+            skills[0]._options.attributes.forEach(attr => {
+                var splitStr = attr.split('_');
+
+                if (splitStr[0] === 'front' && skills[0][attr]) {
+                    trueFrontSkills.push(splitStr[1]);
+                }
+            });
+
+            var out = '<ul class="list">';
+
+
+            for (var i = 0; i < trueFrontSkills.length; i++) {
+                out += "<li>" + trueFrontSkills[i] + "</li>";
+            }
+
+            out += "</ul>";
+            return out;
+        },
+        listBack: function(skills, options) {
+            var trueBackSkills = [];
+
+            skills[0]._options.attributes.forEach(attr => {
+                var splitStr = attr.split('_');
+
+                if (splitStr[0] === 'back' && skills[0][attr]) {
+                    trueBackSkills.push(splitStr[1]);
+                }
+            });
+
+            var out = '<ul class="list">';
+
+            for (var i = 0; i < trueBackSkills.length; i++) {
+                out += "<li>" + trueBackSkills[i] + "</li>";
+            }
+
+            out += "</ul>";
+            return out;
+        },
+        listDesign: function(skills, options) {
+            var trueDesignSkills = [];
+
+            skills[0]._options.attributes.forEach(attr => {
+                var splitStr = attr.split('_');
+
+                if (splitStr[0] === 'design' && skills[0][attr]) {
+                    trueDesignSkills.push(splitStr[1]);
+                }
+            });
+
+            var out = '<ul class="list">';
+
+            for (var i = 0; i < trueDesignSkills.length; i++) {
+                out += "<li>" + trueDesignSkills[i] + "</li>";
+            }
+
+            out += "</ul>";
+            return out;
+        },
+        ifEndorsed: function(username, user) {
+            var out = '<i class="fa fa-star-o" aria-hidden="true"></i>';
+            if (user) {
+                var endorsedList;
+                if (user.endorsed_people) {
+                    endorsedList = user.endorsed_people.split(',');
+
+                    if (endorsedList.includes(username)) {
+                        out = '<i class="fa fa-star" aria-hidden="true"></i>';
+                    } else {
+                        out = '<i class="fa fa-star-o" aria-hidden="true"></i>';
+                    }
+                }
+            }
+            return out;
+        }
+    }
+});
+
+
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 // Serve static content for the app from the "public" directory in the application directory.
@@ -103,10 +186,10 @@ app.use('/public', express.static(__dirname + "/public"));
 
 // required for passport
 app.use(session({
-	secret: 'ilovescotchscotchyscotchscotch',
-	resave: false,
+    secret: 'ilovescotchscotchyscotchscotch',
+    resave: false,
     saveUninitialized: true
- })); // session secret
+})); // session secret
 app.use(flash()); // use connect-flash for flash messages stored in session
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
@@ -116,44 +199,18 @@ app.use(passport.session()); // persistent login sessions
 // =============================================================
 require("./routes/html-routes.js")(app);
 require("./routes/auth-routes.js")(app);
+require("./routes/api-routes.js")(app);
+
+
+// Syncing our sequelize models and then starting our Express app
+// =============================================================
 // require("./routes/author-api-routes.js")(app);
 // require("./routes/post-api-routes.js")(app);
-
-
-
-
-
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
-
-        // db.profile.create({
-        // 	name: "Blake",
-        // 	img_url: "Google.com",
-        // 	title: "fullstack developer",
-        // 	about: "Hello my name is blake I am an aspiring developer",
-        // 	linkedin_url: "linkedin.com",
-        // 	github_url: "github.com",
-        // 	personal_url: "blake.com"
-        // }).then(function(profile) {
-        // 	db.backend_skills.create({
-        // 		mysql : true,
-        // 		profileId: profile.id
-        // 	});
-
-        // 	db.frontend_skill.create({
-        // 		javascript: true,
-        // 		profileId: profile.id
-        // 	});
-
-        // 	db.design_skills.create({
-        // 		photoshop: true,
-        // 		profileId: profile.id
-        // 	});
-
-        // })
     });
 });

@@ -1,6 +1,6 @@
 <style media="screen">
     .long {
-        height: 1000px;
+        min-height: 400px;
     }
 </style>
 
@@ -9,7 +9,9 @@
         <div class="container">
             <div class="row">
                 {{#each profiles}}
-                    {{> profile-parts/profile}}
+                    <a href="/viewprofile/{{id}}">
+                        {{> profile-parts/profile }}
+                    </a>
                 {{/each}}
             </div>
         </div>
