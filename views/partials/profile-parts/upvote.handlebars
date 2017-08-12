@@ -1,8 +1,12 @@
 <span class="big-star">
     <form class=""  action="/endorsement" method="post">
+
         <button class="star-btn" type="submit" name="button">
-            <i class="fa fa-star-o" aria-hidden="true"></i>
+            {{#ifEndorsed username @root.currentU}}
+                {{this}}
+            {{/ifEndorsed}}
         </button>
+
         <input type="hidden" name="username" value="{{this.username}}">
     </form>
 </span>

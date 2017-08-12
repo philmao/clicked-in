@@ -4,11 +4,8 @@ module.exports = function(body, uId) {
 
     var propNames = Object.getOwnPropertyNames(body);
     var returnObj = {
-        'frontEnd': { 'profileId': uId },
-        'backEnd': { 'profileId': uId },
-        'projects': [
-
-        ]
+        'skills': { 'profileId': uId },
+        'projects': []
     };
 
     // console.log(body);
@@ -17,18 +14,24 @@ module.exports = function(body, uId) {
         // split prop name by '-'
         // names on checkboxes in signup follow this convention:
         // name="front-html" || name="back-mysql"
-        var splitStr = propName.split('-');
+        var splitStr = propName.split('_');
         var refactoredArr;
 
         if (splitStr[0] === 'front') {
 
-            returnObj.frontEnd[splitStr[1]] = 1;
+            returnObj.skills[propName] = 1;
 
         } else if (splitStr[0] === 'back') {
 
-            returnObj.backEnd[splitStr[1]] = 1;
+            returnObj.skills[propName] = 1;
 
-        } else if (splitStr[0] === 'proj') {
+        } else if (splitStr[0] === 'design') {
+
+            returnObj.skills[propName] = 1;
+
+        } else if (propName.startsWith('proj')) {
+
+            splitStr = propName.split('-');
 
             refactoredArr = body[propName].filter(elem => elem !== '');
 
