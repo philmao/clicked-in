@@ -207,27 +207,42 @@ module.exports = function(app) {
 
     //User name and password sign up
     app.get('/signup', function(req, res) {
-        res.sendFile(path.join(__dirname + '/signup.html'));
+        var linkedinUser = require('../services/checkForLinkedInUser')(req);
+
+        res.render('local-sign-up', {
+            linkedinUser,
+            'user': req.user
+        });
     });
 
     app.post("/register", function(req, res) {
         console.log(req.body.username);
         console.log(req.body.password);
         db.profile.create({
-            name: "Blake",
-            img_url: "Google.com",
-            title: "fullstack developer",
-            about: "Hello my name is blake I am an aspiring developer",
-            linkedin_url: "linkedin.com",
-            github_url: "github.com",
-            personal_url: "blake.com",
-            username: req.body.username,
-            password: req.body.password,
-            endorsed_people: "seed,"
-        }).then(function(profile) {
+            'username': req.body.username,
+            'password': req.body.password,
+            'name': req.body.name,
+            'img_url': req.body.img_url,
+            'title': req.body.title,
+            'about': req.body.about,
+            'linkedin_url': req.body.linkedin_url,
+            'github_url': req.body.github_url,
+            'personal_url': req.body.personal_url,
+        }).then(profile => {
 
+            // use helper function to separate skills & projects from req.body
+            var separateFields = require('../services/separateFields')(req.body, profile.dataValues.id);
+
+            // create new skills rows in corresponding tables
+            db.Skill.create(separateFields.skills);
+            // db.backend_skill.create(separateFields.backEnd);
+
+            // create new project(s)
+            separateFields.projects.forEach(project => {
+                db.Project.create(project);
+            });
+        }).then(() => {
             res.redirect('/');
-
         });
     });
 
