@@ -27,7 +27,7 @@ module.exports = function(app) {
         db.Skill.findAll({
             where: querySkillWhere
         }).then(function(dbSkill) {
-            console.log(dbSkill);
+            // console.log(dbSkill);
             var queryProfileWhere = {
                 $or: []
             };
