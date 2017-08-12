@@ -14,22 +14,27 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col-sm-2 col-sm-offset-4 col-xs-6">
-                    <h4>Front-End Skills:</h4>
-                    <ul class="list">
-                        {{#each frontSkills}}
-                            <li>{{this}}</li>
-                        {{/each}}
+                <div class="col-sm-2 col-sm-offset-3 col-xs-4">
+                    <h4>Front-End Skills</h4>
+                        {{#listFront skills}}
+                            {{this}}
+                        {{/listFront}}
                     </ul>
                 </div>
-                <div class="col-sm-2 col-xs-6 is-flexed-right">
+                <div class="col-sm-2 col-xs-4 is-flexed-right">
                     <span>
-                        <h4>Back-End Skills:</h4>
-                        <ul class="list">
-                            {{#each backSkills}}
-                                <li>{{this}}</li>
-                            {{/each}}
-                        </ul>
+                        <h4>Back-End Skills</h4>
+                        {{#listBack skills}}
+                            {{this}}
+                        {{/listBack}}
+                    </span>
+                </div>
+                <div class="col-sm-2 col-xs-4 is-flexed-right">
+                    <span>
+                        <h4>Design Skills</h4>
+                        {{#listDesign skills}}
+                            {{this}}
+                        {{/listDesign}}
                     </span>
                 </div>
             </div>

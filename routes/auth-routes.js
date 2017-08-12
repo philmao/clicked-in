@@ -20,13 +20,9 @@ module.exports = app => {
                     'linkedin_id': req.user.id
                 }
             }).then(function(user) {
-                console.log('user in linkedincallback', user)
                 if (user) {
-                    console.log('---- USER FOUND -----');
-                    console.log(user);
                     res.redirect('/');
                 } else {
-                    // console.log(req);
                     res.redirect('/linkedin-signup');
                 }
             });

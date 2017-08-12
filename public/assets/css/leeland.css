@@ -126,6 +126,25 @@ ul.nav.navbar-nav.navbar-right li a:hover {
     border-color: transparent;
 }
 
+.filter-menu {
+    min-width: 600px;
+}
+
+.sign-in-menu {
+    width: 200px !important;
+}
+
+.linkedin-link {
+    padding: 0px !important;
+}
+
+.linkedin-sign-in-btn {
+    width: 100%;
+}
+
+.dropdown-link:hover {
+    background-color: #fff !important;
+}
 
 /* PROFILE CSS - Main Page */
 
@@ -173,9 +192,6 @@ a .profile {
     background-color: transparent;
 }
 
-.dropdown-menu {
-    min-width: 600px;
-}
 
 .filter-heading {
     color: black;
