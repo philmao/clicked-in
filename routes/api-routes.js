@@ -67,7 +67,20 @@ module.exports = function(app) {
 		                });
 		            });
             	});
-			}
+			} else {
+	            db.profile.findAll({
+					'where': queryProfileWhere,
+	                'order': [['endorsements', 'DESC']]
+	            }).then(function(profiles) {
+	                res.render('index', {
+	                    profiles,
+	                    user: req.user,
+	                    linkedinUser,
+	                    title: 'All Profiles',
+	                    authentication: req.isAuthenticated(),
+	                });
+	            });
+	        }
         });
     });
 }
