@@ -16,6 +16,10 @@ body {
     align-items: flex-end;
 }
 
+.modal-backdrop {
+    z-index: 0;
+}
+
 /*=======================
 NAVBAR CSS
 ========================*/
@@ -255,6 +259,10 @@ label {
     width: 250px;
     height: 250px;
     border: solid 5px darkgrey;
+}
+
+a.project-link {
+    color: black !important;
 }
 
 .profile-view-name {

@@ -144,7 +144,7 @@ module.exports = function(app) {
         res.render('sign-up', {
             user: req.user,
             linkedinUser,
-            img_url: req.user._json.pictureUrls.values[0],
+            img_url: req.user._json.pictureUrls.values ? req.user._json.pictureUrls.values[0] : '',
             title: 'Register Your Profile',
             authentication: req.isAuthenticated()
         });
