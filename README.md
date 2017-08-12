@@ -23,7 +23,7 @@ ClickedIn provides a platform for developers to discover other developers and ga
 * Application Route controller setup 
 * Testing/Debugging
 
---
+---
 
 ### Blake Huynh
 
@@ -33,7 +33,7 @@ ClickedIn provides a platform for developers to discover other developers and ga
 * User endorsement/upvoting
 * Testing/Debugging
 
---
+---
 
 ### Philip Mao
 
@@ -42,7 +42,7 @@ ClickedIn provides a platform for developers to discover other developers and ga
 * JawsDB/Heroku setup for deployment
 * Testing/Debugging
 
---
+---
 
 ### David Soto
 
